@@ -19,3 +19,9 @@ we need to install both the packages since the connect methods are all in the re
 For More Info please visit the redux website
 
 https://redux.js.org/introduction/getting-started
+
+To Run Nodejs file use the below steps
+
+Step1: Navigate to the path where the nodejs file is there
+
+Step2: use the command node file_name.js
