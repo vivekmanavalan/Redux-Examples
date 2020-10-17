@@ -2,6 +2,8 @@
 //To run this js file navigate to this file path and give command node BasicRedux.js
 
 const redux = require('redux');
+
+//Store declaration
 const createStore = redux.createStore;
 
 const initialState ={
@@ -9,8 +11,9 @@ const initialState ={
 }
 
 //Create Reducer
-//Reducer is created first because as per flow through reducer only values will reach store
+//As per flow through reducer only values will reach store
 //Reducer accepts two inputs current state and action
+//Simple formula for reducer is current state + action through reducer  = new state
 const rootReducer = (state= initialState, action) => {
     if(action.type==="INC_COUNTER"){
 
@@ -34,10 +37,9 @@ const rootReducer = (state= initialState, action) => {
 const store = createStore(rootReducer);
 
 //create Subscription
-
 //This will get called everytime the action is passed to reducer
 store.subscribe(()=> {
-    console.log(store.getState());
+    console.log("Subscribe method ",store.getState());
 })
 
 //Create Dispatcher 

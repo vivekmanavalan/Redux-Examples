@@ -16,10 +16,18 @@ class Counter extends Component {
         return(
             <div>
                     {/* The below counter value will be fetched from the reducer by using the mapstatetoprops method */}
-                    <h1>Counter {this.props.ctr}</h1>
+                    <h1>Counter {this.props.ctr}</h1>&nbsp;&nbsp;&nbsp;
+                    <ul>
+                        Stored Result
+                        {this.props.results.map((temp,index) =>
+                            <li key={index} onClick={() => this.props.deleteResult(index)}>{temp}</li>
+                            )}
+                        
+                    </ul>
                     <button name="Increment by 1" onClick={this.props.incrementCounterbyOne}>Increment by 1</button>&nbsp;
                     <button name="Increment by 10" onClick={this.props.incrementCounterbyTen}>Increment by 10</button>&nbsp;
-                    <button name="Increment by 50" onClick={this.props.incrementCounterbyFifty}>Increment by 50</button>&nbsp;<br/><br/>
+                    <button name="Increment by 50" onClick={this.props.incrementCounterbyFifty}>Increment by 50</button>&nbsp;
+                    <button name="Store results" onClick={this.props.storeResults}>Store Results</button><br/><br/>
                     Dynamic Subtract:&nbsp;<input type="text" name="subtract" onChange={this.decrementCounter}/>
 
                     {/* By Using the arrow function below we are calling the onclick method immediately */}
@@ -39,7 +47,8 @@ class Counter extends Component {
 
 const mapStatetoProps = state => {
     return {
-        ctr: state.counter
+        ctr: state.counter,
+        results: state.results
     };
 }
 
@@ -59,7 +68,16 @@ const mapDispatchtoProps = dispatch => {
         decrementCounterbyUser: (subval) => dispatch({
             type:'DECREMENTBYUSER',
             val:  subval
+        }),
+        storeResults: () => dispatch({
+            type: 'STORE_RESULTS',
+        }),
+        deleteResult: (index) => dispatch({
+            type:'DELETE_RESULTS',
+            id: index,
+            
         })
+
     };
 }
 

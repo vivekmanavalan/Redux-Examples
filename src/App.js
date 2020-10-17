@@ -1,8 +1,5 @@
 import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
 import Ctr from './components/Counter';
-import BasicRedux from './components/NodeRedux';
 import './App.css';
 
 function App() {
