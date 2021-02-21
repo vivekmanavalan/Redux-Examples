@@ -1,27 +1,39 @@
-# Redux-Examples
-This repository contains all the basics of react redux
+# Middleware and Thunk
 
-We can install redux in two ways.
+In this project we have middlewares and redux thunk.
 
-Method 1: 
-While creating a react app itself we can create a redux template. For that use the below command
+Middleware:
 
-npx create-react-app my-app --template redux
+* we can know what the action is dispatching and be able to see the values using the middleware.
 
-Method 2: 
+* Redux middleware function provides a medium to interact with dispatched action before they reach the reducer
 
-After creating react app using the standard npx command we can install redux manually after that using the below command.
+* Using the middleware you can access current state and return a function.
 
-npm install react-redux redux
+Thunk:
 
-we need to install both the packages since the connect methods are all in the react-redux packages and the remaining in the redux package.
+* redux thunk is mainly used to do async operations and API calls in redux 
 
-For More Info please visit the redux website
+* since reducers are pure functions and API calls are not allowed in the reducers.
 
-https://redux.js.org/introduction/getting-started
+* Redux thunk middleware allows us to write action creators that return a function instead of action.
 
-To Run Nodejs file use the below steps
+* Thunk delay dispatch of an action, dispatch only if certain condition is met or do API calls.
 
-Step1: Navigate to the path where the nodejs file is there
 
-Step2: use the command node file_name.js
+export const saveresult =(res) => {
+    return {
+        type: STORERESULT,
+        results: res,
+    }
+}
+
+//Advantage of installing redux thunk is we are now able to do async operations and can also do API calls
+//Below we tried to sleep 2000 and then store the result by calling the saveresult method
+export const storeresult = (res) => {
+    return dispatch => { 
+        setTimeout(() => {
+            dispatch(saveresult(res));
+        }, 2000);
+    }
+}
