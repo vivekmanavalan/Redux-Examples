@@ -20,7 +20,7 @@ Thunk:
 
 * Thunk delay dispatch of an action, dispatch only if certain condition is met or do API calls.
 
-
+'''
 export const saveresult =(res) => {
     return {
         type: STORERESULT,
@@ -37,3 +37,4 @@ export const storeresult = (res) => {
         }, 2000);
     }
 }
+'''
