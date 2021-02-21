@@ -1,27 +1,15 @@
-# Redux-Examples
-This repository contains all the basics of react redux
+# Multiple Reducers
 
-We can install redux in two ways.
+In this project we have used 2 reducers in the index.js file. 
 
-Method 1: 
-While creating a react app itself we can create a redux template. For that use the below command
+* In Redux you can have any number of reducers but we need to have a single root reducer for all. 
 
-npx create-react-app my-app --template redux
+* We can combine all the reducers by importing the combineReducers from redux.
 
-Method 2: 
+import {createStore, combineReducers} from 'redux';
 
-After creating react app using the standard npx command we can install redux manually after that using the below command.
-
-npm install react-redux redux
-
-we need to install both the packages since the connect methods are all in the react-redux packages and the remaining in the redux package.
-
-For More Info please visit the redux website
-
-https://redux.js.org/introduction/getting-started
-
-To Run Nodejs file use the below steps
-
-Step1: Navigate to the path where the nodejs file is there
-
-Step2: use the command node file_name.js
+//combining multiple reducers
+const rootreducer = combineReducers({
+  ctr: counterreducer,
+  res: resultreducer
+})
